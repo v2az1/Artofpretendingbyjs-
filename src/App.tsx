@@ -97,7 +97,7 @@ export default function App() {
       <PullQuote 
         quote="I never wrote because I had all the answers. I wrote because I was brave enough to sit with the questions."
         author="Javeria Naseer"
-        italicizedAuthorSub="A Note for the Developer"
+        italicizedAuthorSub="A Note to the Reader"
       />
 
       {/* Community Guestbook & Reader Reviews Feed */}

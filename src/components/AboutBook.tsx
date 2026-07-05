@@ -3,27 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { BookOpen, Calendar, MapPin, Award, ChevronDown, ChevronUp, FileText } from "lucide-react";
-import { BOOK_CHAPTERS, Chapter } from "../types";
+import { BookOpen, Calendar, MapPin, Award } from "lucide-react";
 import bookCoverImg from "../assets/images/book_cover_real_1783097385467.jpg";
 
 export default function AboutBook() {
-  const [activeChapterIndex, setActiveChapterIndex] = useState<number | null>(null);
-  const [showAllChapters, setShowAllChapters] = useState(false);
-
-  // Show first 6 chapters initially, allow expanding to see all 21
-  const visibleChapters = showAllChapters ? BOOK_CHAPTERS : BOOK_CHAPTERS.slice(0, 6);
-
-  const toggleChapter = (index: number) => {
-    if (activeChapterIndex === index) {
-      setActiveChapterIndex(null);
-    } else {
-      setActiveChapterIndex(index);
-    }
-  };
-
   return (
     <section
       id="about-book"
@@ -246,108 +229,6 @@ export default function AboutBook() {
 
           </div>
 
-        </div>
-
-        {/* Interactive Chapters Anatomy Synopsis */}
-        <div className="mt-20 pt-12 border-t border-slate-900/40">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-10 gap-4">
-            <div>
-              <h3 className="font-serif text-2xl md:text-3xl text-slate-100 font-medium tracking-wide">
-                Interactive Chapters Map
-              </h3>
-              <p className="font-sans text-xs text-[#8ba2b5] mt-2">
-                Trace the 21 chapters of psychological uncovering, progression, and ultimate healing.
-              </p>
-            </div>
-            
-            <button
-              onClick={() => setShowAllChapters(!showAllChapters)}
-              className="flex items-center space-x-2 text-xs font-sans uppercase tracking-[0.25em] text-[#d4af37] hover:text-gold-400 transition-colors duration-300 focus:outline-none"
-            >
-              <span>{showAllChapters ? "Collapse Map" : "Explore All 21 Chapters"}</span>
-              {showAllChapters ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <AnimatePresence mode="popLayout">
-              {visibleChapters.map((chapter, index) => {
-                const isOpen = activeChapterIndex === index;
-                return (
-                  <motion.div
-                    key={chapter.number}
-                    layout="position"
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.4 }}
-                    className={`bg-[#070e16]/60 border transition-all duration-300 rounded-sm cursor-pointer overflow-hidden ${
-                      isOpen 
-                        ? "border-gold-500/50 shadow-md shadow-gold-500/5" 
-                        : "border-slate-900/80 hover:border-slate-800"
-                    }`}
-                    onClick={() => toggleChapter(index)}
-                  >
-                    <div className="p-5 flex justify-between items-center">
-                      <div className="flex items-center space-x-4">
-                        <span className="font-mono text-xs text-gold-500/75 w-6">
-                          {String(chapter.number).padStart(2, "0")}
-                        </span>
-                        <div>
-                          <h4 className="font-serif text-base text-slate-200 font-medium tracking-wide">
-                            {chapter.title}
-                          </h4>
-                          <span className="font-mono text-[9px] text-[#8ba2b5] uppercase tracking-widest mt-0.5 block">
-                            {chapter.theme}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="text-slate-500">
-                        {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                      </div>
-                    </div>
-
-                    <AnimatePresence>
-                      {isOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="border-t border-slate-900 bg-slate-950/40"
-                        >
-                          <div className="p-5 space-y-4">
-                            <p className="font-sans text-xs text-slate-300 leading-relaxed">
-                              {chapter.description}
-                            </p>
-                            <div className="bg-[#0b1622]/40 border border-slate-900/40 p-3 rounded-sm">
-                              <span className="font-sans text-[8px] uppercase tracking-[0.2em] text-[#8ba2b5] block mb-1">
-                                Psychological Insight
-                              </span>
-                              <span className="font-serif italic text-xs text-slate-400">
-                                {chapter.psychologicalAspect}
-                              </span>
-                            </div>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
-          </div>
-
-          {!showAllChapters && (
-            <div className="mt-10 text-center">
-              <button
-                onClick={() => setShowAllChapters(true)}
-                className="px-6 py-2.5 bg-transparent border border-slate-800 hover:border-gold-500/50 text-slate-400 hover:text-[#d4af37] font-sans text-[10px] uppercase tracking-[0.2em] transition-all duration-300 focus:outline-none"
-              >
-                Expand All 21 Chapters Map
-              </button>
-            </div>
-          )}
         </div>
 
       </div>
