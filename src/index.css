@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", sans-serif;
+  
+  --color-gold-50: #fefcf3;
+  --color-gold-100: #fcf6e2;
+  --color-gold-200: #f8ebb9;
+  --color-gold-300: #f2db86;
+  --color-gold-400: #e8c454;
+  --color-gold-500: #d4af37;
+  --color-gold-600: #b5902b;
+  --color-gold-700: #917024;
+  --color-gold-800: #755921;
+  --color-gold-900: #624a1e;
+  --color-gold-950: #39280e;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(7, 14, 22, 0.4);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.2);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.4);
+}
+
+/* GPU-Accelerated Floating Particles Animation */
+@keyframes float-particle {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(50px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* 3D Floating Book physics */
+@keyframes float-book {
+  0% {
+    transform: translateY(0px) rotateY(-12deg) rotateX(4deg);
+  }
+  50% {
+    transform: translateY(-16px) rotateY(-15deg) rotateX(6deg);
+  }
+  100% {
+    transform: translateY(0px) rotateY(-12deg) rotateX(4deg);
+  }
+}
+
+@keyframes float-shadow {
+  0% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateX(-50%) scale(0.82);
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.4;
+  }
+}
+
+/* Cinematic Horizontally Drifting Mist Waves */
+@keyframes mist-drift-slow {
+  0% {
+    transform: translateX(0) translateZ(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-25%) translateZ(0) scaleY(0.9);
+  }
+  100% {
+    transform: translateX(-50%) translateZ(0) scaleY(1);
+  }
+}
+
+@keyframes mist-drift-fast {
+  0% {
+    transform: translateX(-50%) translateZ(0) scaleY(0.85);
+  }
+  50% {
+    transform: translateX(-25%) translateZ(0) scaleY(1);
+  }
+  100% {
+    transform: translateX(0) translateZ(0) scaleY(0.85);
+  }
+}
+
+@keyframes ping-slow {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.15;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+/* Utility Animations Hookups */
+.animate-float-book {
+  animation: float-book 6s infinite ease-in-out;
+}
+
+.animate-float-shadow {
+  animation: float-shadow 6s infinite ease-in-out;
+}
+
+.animate-mist-drift-slow {
+  animation: mist-drift-slow 22s infinite linear;
+}
+
+.animate-mist-drift-fast {
+  animation: mist-drift-fast 14s infinite linear;
+}
+
+.animate-ping-slow {
+  animation: ping-slow 4s infinite ease-out;
+}
+
+.animate-ping-medium {
+  animation: ping-slow 2.5s infinite ease-out;
+}
+
+/* Breathtaking 3D Interactive Hover effect for book mockup */
+.book-3d {
+  transform: rotateY(-12deg) rotateX(4deg);
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Starlike Background dot pattern texture */
+.bg-radial-gradient-dots {
+  background-image: radial-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
