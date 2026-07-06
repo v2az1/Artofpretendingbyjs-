@@ -9,8 +9,27 @@ import { MessageSquare, Heart, Sparkles, Star, ShieldCheck } from "lucide-react"
 import { INITIAL_REVIEWS, Review } from "../types";
 
 export default function CommunityGuestbook() {
-  const [reviews, setReviews] = useState<Review[]>(INITIAL_REVIEWS);
+  const [reviews, setReviews] = useState<Review[]>(() => {
+    try {
+      const saved = localStorage.getItem("sanctuary_guestbook_reviews");
+      if (saved) {
+        return JSON.parse(saved);
+      }
+    } catch (e) {
+      console.error("Failed to load guestbook reviews from localStorage", e);
+    }
+    return INITIAL_REVIEWS;
+  });
   
+  const [likedReviews, setLikedReviews] = useState<Record<string, boolean>>(() => {
+    try {
+      const saved = localStorage.getItem("sanctuary_guestbook_likes");
+      return saved ? JSON.parse(saved) : {};
+    } catch {
+      return {};
+    }
+  });
+
   // Custom form state
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
@@ -20,6 +39,16 @@ export default function CommunityGuestbook() {
   
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const toggleLike = (id: string) => {
+    const updated = { ...likedReviews, [id]: !likedReviews[id] };
+    setLikedReviews(updated);
+    try {
+      localStorage.setItem("sanctuary_guestbook_likes", JSON.stringify(updated));
+    } catch (e) {
+      console.error("Failed to save like to localStorage", e);
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,7 +67,14 @@ export default function CommunityGuestbook() {
       verified: false
     };
 
-    setReviews([newReview, ...reviews]);
+    const updatedReviews = [newReview, ...reviews];
+    setReviews(updatedReviews);
+    try {
+      localStorage.setItem("sanctuary_guestbook_reviews", JSON.stringify(updatedReviews));
+    } catch (e) {
+      console.error("Failed to save reviews to localStorage", e);
+    }
+    
     setSuccess(true);
     setError(null);
 
@@ -272,9 +308,17 @@ export default function CommunityGuestbook() {
                       <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#8ba2b5]/60">
                         The Art of Pretending Companion Feed
                       </span>
-                      <button className="flex items-center space-x-1.5 text-[#8ba2b5] hover:text-[#d4af37] transition-colors focus:outline-none">
-                        <Heart size={12} className="fill-none" />
-                        <span className="font-mono text-[9px] uppercase tracking-wider">Connect</span>
+                      <button
+                        onClick={() => toggleLike(rev.id)}
+                        className={`flex items-center space-x-1.5 transition-colors focus:outline-none ${
+                          likedReviews[rev.id] ? "text-[#d4af37]" : "text-[#8ba2b5] hover:text-[#d4af37]"
+                        }`}
+                        aria-label={likedReviews[rev.id] ? "Disconnect with reader" : "Connect with reader"}
+                      >
+                        <Heart size={12} className={likedReviews[rev.id] ? "fill-current" : "fill-none"} />
+                        <span className="font-mono text-[9px] uppercase tracking-wider">
+                          {likedReviews[rev.id] ? "Connected" : "Connect"}
+                        </span>
                       </button>
                     </div>
                   </motion.div>
