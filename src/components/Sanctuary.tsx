@@ -26,6 +26,34 @@ export default function Sanctuary() {
     setIsLoading(true);
     setError(null);
 
+    const POETIC_FALLBACKS: Record<string, { empatheticQuote: string; poeticResponse: string; actionableStep: string }> = {
+      strong: {
+        empatheticQuote: "You carry a mountain on your shoulders, yet you pretend it is only a summer breeze.",
+        poeticResponse: "You have spent so long being the pillar of everyone else's temple that you have forgotten that columns, too, can crack under constant pressure. It is exhausting to be strong for a world that forgets you are human. You do not have to hold up the sky alone today. It is okay to let yourself rest, to bend, and to receive the warmth you so freely give to others.",
+        actionableStep: "Let one small thing go unmanaged today. Tell someone you care about, 'I am tired, and I need a little help with this.' Notice how the sky does not fall when you do."
+      },
+      happy: {
+        empatheticQuote: "The brightest smiles often cast the deepest, most silent shadows.",
+        poeticResponse: "You have styled yourself as the sun in everyone's sky, bringing warmth and laughter to keep their clouds away. But when the laughter fades and the room goes quiet, you are left in the cold. It is a lonely burden to carry a cheerful face when your soul is quietly weeping. Your sadness is not an inconvenience, nor is your weariness a failure. It is simply a truth waiting to be held.",
+        actionableStep: "Find a mirror or a quiet room tonight. Take a deep, slow breath, let your facial muscles completely relax, take off your public smile, and let your face rest in its quietest, most honest shape for three minutes."
+      },
+      perfect: {
+        empatheticQuote: "Your worth was never meant to be measured by the weight of your accomplishments.",
+        poeticResponse: "You run at full speed, chasing checklists, titles, and flawless standards, hoping that if you achieve enough, you will finally feel like you are enough. But this perfection is a beautiful cage. Beneath your accomplishments is a soul that is tired of performing. You do not need to be flawless to be loved, and you do not need to be exceptional to deserve to exist.",
+        actionableStep: "Purposely do one small thing imperfectly today, or leave a low-priority task completely unfinished. Look at it, breathe through the anxiety, and whisper: 'I am still worthy of peace.'"
+      },
+      fine: {
+        empatheticQuote: "Behind every 'I'm fine' is an ocean of words waiting to be understood.",
+        poeticResponse: "You have trained your voice to be small and your pain to be quiet, believing that to speak your struggles is to become a burden. But by swallowing your storms, you are drowning from the inside. Your pain does not need to be a global crisis to be valid. Your quiet hurts deserve a soft space to land, and your voice deserves to be heard without apology.",
+        actionableStep: "Write down your honest answer to 'How are you?' on a scrap of paper. Don't edit it. Keep it just for yourself, or tear it up as a physical release of the silence you've been holding."
+      },
+      general: {
+        empatheticQuote: "Behind every mask is a beautiful story of survival, waiting for the courage to be told.",
+        poeticResponse: "Pretending is how we survived the moments that felt too heavy to carry. It was your armor, and it served you well. But armor eventually becomes a cage if we never learn to take it off. Your silent battles, your hidden tears, and your unspoken fears are safe here. Healing does not ask you to never be afraid; it only asks you to stop hiding your heart from yourself.",
+        actionableStep: "Spend five minutes in complete silence today. Place a hand on your heart, acknowledge the weight you've been carrying, and gently tell yourself: 'I see how hard you've been trying. It is okay to let go.'"
+      }
+    };
+
     try {
       const response = await fetch("/api/reflect", {
         method: "POST",
@@ -43,8 +71,20 @@ export default function Sanctuary() {
       const data = await response.json();
       setReflectionResult(data);
     } catch (err) {
-      console.error(err);
-      setError("The sanctuary is experiencing a quiet storm. Please try again.");
+      console.warn("API reflect endpoint failed, falling back to local poetic generator.", err);
+      // Seamless graceful client fallback
+      const type = selectedMask || "general";
+      const fb = POETIC_FALLBACKS[type] || POETIC_FALLBACKS.general;
+      
+      if (customConfession && customConfession.trim() !== "") {
+        setReflectionResult({
+          empatheticQuote: fb.empatheticQuote,
+          poeticResponse: `You shared: "${customConfession}". This is a deeply honest step. ${fb.poeticResponse}`,
+          actionableStep: fb.actionableStep
+        });
+      } else {
+        setReflectionResult(fb);
+      }
     } finally {
       setIsLoading(false);
     }

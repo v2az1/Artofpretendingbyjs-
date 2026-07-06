@@ -100,12 +100,7 @@ export default function AboutBook() {
                     <img 
                       src={bookCoverImg} 
                       alt="Front Cover of The Art of Pretending" 
-                      className="h-full max-w-none object-cover"
-                      style={{
-                        width: "112.5%",
-                        height: "100%",
-                        marginLeft: "-12.5%",
-                      }}
+                      className="h-full w-full object-cover"
                       referrerPolicy="no-referrer"
                     />
                     {/* Realistic glossy spine-fold overlay effect */}

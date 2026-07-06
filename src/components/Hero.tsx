@@ -46,11 +46,7 @@ export default function Hero() {
         <img
           src={bookCoverImg}
           alt="The Art of Pretending Cinematic Cover Background"
-          className="h-full max-w-none object-cover filter brightness-90 saturate-[0.85]"
-          style={{
-            width: "112.5%",
-            marginLeft: "-12.5%",
-          }}
+          className="w-full h-full object-cover filter brightness-90 saturate-[0.85]"
           referrerPolicy="no-referrer"
         />
         {/* Subtle Ambient Vignette & Linear Gradients */}
