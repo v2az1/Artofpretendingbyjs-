@@ -139,7 +139,7 @@ export default function Hero() {
       </div>
 
       {/* Floating Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 pointer-events-none flex flex-col items-center">
+      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 pointer-events-none flex flex-col items-center">
         <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-[#8ba2b5]/60 mb-2">
           Scroll to enter
         </span>
