@@ -40,35 +40,7 @@ export interface ReflectionResponse {
   actionableStep: string;
 }
 
-export const INITIAL_REVIEWS: Review[] = [
-  {
-    id: "seed-rev-1",
-    name: "Alizeh Shah",
-    location: "Lahore, Pakistan",
-    rating: 5,
-    text: "Reading the excerpt of Chapter 7, 'Homesickness of the Soul', felt like the author had peered into my private diaries. As a student living away from home, this is the first book that doesn't just tell me to feel better—it explains the psychological architecture of why we hide behind our smiles.",
-    date: "2026-06-28",
-    verified: true
-  },
-  {
-    id: "seed-rev-2",
-    name: "Dr. Kamran Rehman",
-    location: "Karachi, Pakistan",
-    rating: 5,
-    text: "An extraordinary blend of academic psychological theory and raw, poetic empathy. As a mental health educator, I highly recommend 'The Art of Pretending' to anyone who has spent years struggling to find the words for their silent battles.",
-    date: "2026-07-02",
-    verified: true
-  },
-  {
-    id: "seed-rev-3",
-    name: "Sarmad Alvi",
-    location: "Islamabad, Pakistan",
-    rating: 5,
-    text: "The Interactive Sanctuary alone is a breath of fresh air. This book is a gentle, reassuring guide reminding us that being hyper-independent isn't a badge of strength—it's just armor we are allowed to take off when we feel safe.",
-    date: "2026-07-04",
-    verified: true
-  }
-];
+export const INITIAL_REVIEWS: Review[] = [];
 
 export const SUGGESTED_MASKS = [
   {

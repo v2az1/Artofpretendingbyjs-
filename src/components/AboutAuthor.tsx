@@ -43,7 +43,7 @@ export default function AboutAuthor() {
 
           <div className="space-y-6 max-w-3xl text-slate-300 font-sans text-sm md:text-base leading-relaxed">
             <p>
-              Javeria Naseer is an emerging writer and a dedicated <strong className="text-[#d4af37]">BS Psychology student</strong> based in Pakistan. Her academic path offers her a unique lens into the intricate architectures of human emotion—specifically, the defensive masks we build to survive distress, social expectations, and personal trauma.
+              Javeria Naseer is an emerging writer and a dedicated <strong className="text-[#d4af37]">BS Psychology student</strong> based in Pakistan. Her academic path offers her a unique lens into the intricate architectures of human emotion: specifically, the defensive masks we build to survive distress, social expectations, and personal trauma.
             </p>
 
             <p>
@@ -52,7 +52,7 @@ export default function AboutAuthor() {
 
             <div className="relative py-6 my-4 border-y border-slate-900/80">
               <span className="font-serif text-lg md:text-xl italic text-slate-200 max-w-2xl block mx-auto leading-relaxed">
-                "I didn't write because I held all the answers. I wrote because my psychology studies taught me how to sit comfortably with the heavy questions. I wanted to build a quiet sanctuary in print—a place where people can slowly take off their public smiles and feel safe enough to fall apart, knowing they will be put back together with grace."
+                "I didn't write because I held all the answers. I wrote because my psychology studies taught me how to sit comfortably with the heavy questions. I wanted to build a quiet sanctuary in print, a place where people can slowly take off their public smiles and feel safe enough to fall apart, knowing they will be put back together with grace."
               </span>
             </div>
           </div>

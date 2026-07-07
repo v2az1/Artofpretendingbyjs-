@@ -111,16 +111,16 @@ export default function Excerpt() {
                     >
                       <div className="space-y-6 pt-4 border-t border-slate-900/40 mt-6 text-slate-300 font-sans text-sm md:text-base leading-relaxed">
                         <p>
-                          That kind of stress had the decency not to rouse us at three in the morning. It was predictable. Containable. Almost courteous in its cruelty—a mercy I failed to recognize at the time.
+                          That kind of stress had the decency not to rouse us at three in the morning. It was predictable. Containable. Almost courteous in its cruelty, a mercy I failed to recognize at the time.
                         </p>
                         <p>
-                          I remember sitting in my hostel room one unremarkable night, not even during exam season, simply dwelling on all of it—on how uncomplicated things once were, back when the worst possible outcome had a syllabus and a due date. It felt peculiar to miss something I'd once resented. But I did. I sat there long enough that the thought stopped feeling trivial and started feeling undeniable.
+                          I remember sitting in my hostel room one unremarkable night, not even during exam season, simply dwelling on all of it, on how uncomplicated things once were, back when the worst possible outcome had a syllabus and a due date. It felt peculiar to miss something I'd once resented. But I did. I sat there long enough that the thought stopped feeling trivial and started feeling undeniable.
                         </p>
                         <p className="font-serif italic text-lg text-slate-200 py-2 border-l-2 border-[#d4af37]/30 pl-4 my-4">
                           What I didn't yet grasp was that life would eventually hand me questions with no answer key.
                         </p>
                         <p>
-                          Nobody warned us that growing up meant shouldering burdens that resisted measurement. Nobody warned us we'd one day long for the certainty of those old anxieties—not because those days were painless, but because the suffering came with instructions: Study harder. Try again. Await the results.
+                          Nobody warned us that growing up meant shouldering burdens that resisted measurement. Nobody warned us we'd one day long for the certainty of those old anxieties, not because those days were painless, but because the suffering came with instructions: Study harder. Try again. Await the results.
                         </p>
                         <p className="font-serif text-[#d4af37] font-medium tracking-wide">
                           Adult pain arrives with no instructions at all.
@@ -129,10 +129,10 @@ export default function Excerpt() {
                           There's another species of stress. The kind nobody prepares you for. It ignores timetables. It surfaces in the dead of night, presses against your chest, and amplifies every thought until it feels unbearably loud. It thrusts your deepest fears into your hands and demands you hold them, even when you're already depleted.
                         </p>
                         <p>
-                          It compels you to interrogate every silence, every message left unanswered, every conversation you never intended to replay. It trails you into a crowded room and still leaves you isolated. And gradually, without your noticing, it transforms honesty into performance—it teaches you to say "I'm fine" so convincingly that even you begin to believe the lie.
+                          It compels you to interrogate every silence, every message left unanswered, every conversation you never intended to replay. It trails you into a crowded room and still leaves you isolated. And gradually, without your noticing, it transforms honesty into performance, teaching you to say "I'm fine" so convincingly that even you begin to believe the lie.
                         </p>
                         <p>
-                          We assumed adulthood would mean liberation. Instead, it became clamor—deadlines, comparisons, heartbreak, and pressure, layered so densely that it grows difficult to discern where one ends and the next begins. Somewhere along the way, achievement stopped feeling like cause for celebration and started feeling like an obligation.
+                          We assumed adulthood would mean liberation. Instead, it became clamor: deadlines, comparisons, heartbreak, and pressure, layered so densely that it grows difficult to discern where one ends and the next begins. Somewhere along the way, achievement stopped feeling like cause for celebration and started feeling like an obligation.
                         </p>
                         <p>
                           We learned to quantify our worth in grades, followers, internships. To watch others flourish and wonder why we lagged behind. To bear impossible standards and mistake them for ambition.
@@ -141,10 +141,10 @@ export default function Excerpt() {
                           For countless students, the pressure takes root long before adulthood arrives. In the dread of disappointing parents who sacrificed everything. In the unease of choosing the right path, wondering whether years of effort lead anywhere meaningful at all. In watching peers appear certain of their futures while you remain uncertain of yours.
                         </p>
                         <p>
-                          And somewhere amid all this, we mastered the art of pretending. Pretending we have everything under control when we don't. Pretending we've moved past something that still lingers, unresolved. Pretending we aren't terrified of the future, or lonely, or adrift—all while performing the role of someone who knows precisely where they're headed.
+                          And somewhere amid all this, we mastered the art of pretending. Pretending we have everything under control when we don't. Pretending we've moved past something that still lingers, unresolved. Pretending we aren't terrified of the future, or lonely, or adrift, all while performing the role of someone who knows precisely where they're headed.
                         </p>
                         <p>
-                          Exams were never truly the point. The real burden is the relentless effort to feel sufficient in a world that keeps demanding more—from teachers, from parents, from ourselves.
+                          Exams were never truly the point. The real burden is the relentless effort to feel sufficient in a world that keeps demanding more: from teachers, from parents, and from ourselves.
                         </p>
                         <p>
                           Perhaps you're mourning a version of your life that never came to pass. Perhaps you're homesick, or simply exhausted from the constant performance of strength. If either rings true, you haven't failed. You're merely carrying something that never appears on a report card.
@@ -183,7 +183,7 @@ export default function Excerpt() {
                     “
                   </span>
                   <p className="font-serif text-lg md:text-2xl italic leading-relaxed text-slate-200 tracking-wide">
-                    Sometimes, we pretend so well, even we forget who we really are. If you're reading this, perhaps you've sensed it too—the urge to pretend...
+                    Sometimes, we pretend so well, even we forget who we really are. If you're reading this, perhaps you've sensed it too: the urge to pretend...
                   </p>
                   <footer className="mt-4 flex items-center space-x-2 justify-end">
                     <span className="w-4 h-[1px] bg-gold-500/40"></span>
@@ -196,7 +196,7 @@ export default function Excerpt() {
                 <div className="w-8 h-[1px] bg-slate-900 mx-auto my-8"></div>
 
                 <p className="font-sans text-sm md:text-base leading-relaxed text-slate-300">
-                  If you're reading this, perhaps you've sensed it too—the urge to pretend. The urge to smile while aching inside, to project assurance while drowning in doubt, and to behave as though everything is perfectly fine when, beneath the surface, it feels like anything but. It is a quiet struggle that countless people carry every day, often without grasping how deeply it shapes them.
+                  If you're reading this, perhaps you've sensed it too: the urge to pretend. The urge to smile while aching inside, to project assurance while drowning in doubt, and to behave as though everything is perfectly fine when, beneath the surface, it feels like anything but. It is a quiet struggle that countless people carry every day, often without grasping how deeply it shapes them.
                 </p>
 
                 <AnimatePresence>
@@ -252,7 +252,7 @@ export default function Excerpt() {
                           Yet real growth begins when we confront these disguises and question whether they still serve a purpose.
                         </p>
                         <p className="text-[#d4af37] font-serif italic text-center text-lg mt-8 pt-4 border-t border-slate-900/60">
-                          Because behind every elaborately constructed facade lives an authentic self awaiting recognition — one that requires no perfection, no ceaseless approval, no unending performance to be deemed worthy.
+                          Because behind every elaborately constructed facade lives an authentic self awaiting recognition, one that requires no perfection, no ceaseless approval, no unending performance to be deemed worthy.
                         </p>
                         <p>
                           Before we can cast off our disguises, we must first learn to spot them. And that begins with understanding the different forms they take and the hidden motives behind why we choose to wear them.

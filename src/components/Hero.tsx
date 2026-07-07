@@ -87,7 +87,7 @@ export default function Hero() {
       {/* Content Container (Top to bottom precisely structured) */}
       <div className="relative z-30 max-w-4xl px-6 text-center flex flex-col items-center justify-center h-full pt-16">
         
-        {/* 1. JAVERIA NASEER — 11px, spaced uppercase, mist blue color */}
+        {/* 1. JAVERIA NASEER: 11px, spaced uppercase, mist blue color */}
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -97,7 +97,7 @@ export default function Hero() {
           Javeria Naseer
         </motion.p>
 
-        {/* 2. The Art of Pretending — 52–60px Cormorant Garamond Italic, near white */}
+        {/* 2. The Art of Pretending: 52-60px Cormorant Garamond Italic, near white */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -107,7 +107,7 @@ export default function Hero() {
           The Art of Pretending
         </motion.h1>
 
-        {/* 3. "Behind every 'I'm fine' is a world waiting to be understood." — 14px italic, mist blue */}
+        {/* 3. "Behind every 'I'm fine' is a world waiting to be understood." : 14px italic, mist blue */}
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -117,7 +117,7 @@ export default function Hero() {
           "Behind every 'I'm fine' is a world waiting to be understood."
         </motion.p>
 
-        {/* 4. Pre-order Now — gold border button, gold text, no fill */}
+        {/* 4. Pre-order Now: gold border button, gold text, no fill */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
