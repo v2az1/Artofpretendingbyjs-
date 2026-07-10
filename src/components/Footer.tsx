@@ -9,8 +9,8 @@ import { BookOpen, Globe, Heart, ShoppingBag, Terminal } from "lucide-react";
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const WHATSAPP_MESSAGE = encodeURIComponent("Hello Javeria Naseer! I am interested in pre-ordering your book \"The Art of Pretending\". Please let me know the process.");
-  const WHATSAPP_URL = `https://wa.me/923000000000?text=${WHATSAPP_MESSAGE}`;
+  const WHATSAPP_MESSAGE = encodeURIComponent("Hi! I want to order 📚");
+  const WHATSAPP_URL = `https://wa.me/923324882840?text=${WHATSAPP_MESSAGE}`;
 
   return (
     <footer

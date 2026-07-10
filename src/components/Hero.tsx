@@ -23,8 +23,8 @@ export default function Hero() {
 
   const handlePreorderWhatsapp = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const message = encodeURIComponent("Hello Javeria Naseer! I am interested in pre-ordering your book \"The Art of Pretending\". Please let me know the process.");
-    const whatsappUrl = `https://wa.me/923000000000?text=${message}`;
+    const message = encodeURIComponent("Hi! I want to order 📚");
+    const whatsappUrl = `https://wa.me/923324882840?text=${message}`;
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
