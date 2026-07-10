@@ -5,7 +5,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { MessageSquare, Heart, Sparkles, Star, ShieldCheck } from "lucide-react";
+import { MessageSquare, Heart, Sparkles, Star, ShieldCheck, Trash2 } from "lucide-react";
 import { INITIAL_REVIEWS, Review } from "../types";
 
 export default function CommunityGuestbook() {
@@ -30,6 +30,15 @@ export default function CommunityGuestbook() {
     }
   });
 
+  const [myReviewIds, setMyReviewIds] = useState<string[]>(() => {
+    try {
+      const saved = localStorage.getItem("sanctuary_my_review_ids");
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
   // Custom form state
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
@@ -47,6 +56,21 @@ export default function CommunityGuestbook() {
       localStorage.setItem("sanctuary_guestbook_likes", JSON.stringify(updated));
     } catch (e) {
       console.error("Failed to save like to localStorage", e);
+    }
+  };
+
+  const handleDeleteReview = (id: string) => {
+    const updatedReviews = reviews.filter((rev) => rev.id !== id);
+    setReviews(updatedReviews);
+    
+    const updatedMyIds = myReviewIds.filter((myId) => myId !== id);
+    setMyReviewIds(updatedMyIds);
+    
+    try {
+      localStorage.setItem("sanctuary_guestbook_reviews", JSON.stringify(updatedReviews));
+      localStorage.setItem("sanctuary_my_review_ids", JSON.stringify(updatedMyIds));
+    } catch (e) {
+      console.error("Failed to delete review from localStorage", e);
     }
   };
 
@@ -69,8 +93,13 @@ export default function CommunityGuestbook() {
 
     const updatedReviews = [newReview, ...reviews];
     setReviews(updatedReviews);
+
+    const updatedMyIds = [newReview.id, ...myReviewIds];
+    setMyReviewIds(updatedMyIds);
+
     try {
       localStorage.setItem("sanctuary_guestbook_reviews", JSON.stringify(updatedReviews));
+      localStorage.setItem("sanctuary_my_review_ids", JSON.stringify(updatedMyIds));
     } catch (e) {
       console.error("Failed to save reviews to localStorage", e);
     }
@@ -308,18 +337,32 @@ export default function CommunityGuestbook() {
                       <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#8ba2b5]/60">
                         The Art of Pretending Companion Feed
                       </span>
-                      <button
-                        onClick={() => toggleLike(rev.id)}
-                        className={`flex items-center space-x-1.5 transition-colors focus:outline-none ${
-                          likedReviews[rev.id] ? "text-[#d4af37]" : "text-[#8ba2b5] hover:text-[#d4af37]"
-                        }`}
-                        aria-label={likedReviews[rev.id] ? "Disconnect with reader" : "Connect with reader"}
-                      >
-                        <Heart size={12} className={likedReviews[rev.id] ? "fill-current" : "fill-none"} />
-                        <span className="font-mono text-[9px] uppercase tracking-wider">
-                          {likedReviews[rev.id] ? "Connected" : "Connect"}
-                        </span>
-                      </button>
+                      <div className="flex items-center space-x-4">
+                        {myReviewIds.includes(rev.id) && (
+                          <button
+                            onClick={() => handleDeleteReview(rev.id)}
+                            className="flex items-center space-x-1 text-red-500 hover:text-red-400 transition-colors focus:outline-none cursor-pointer"
+                            aria-label="Delete your reflection"
+                          >
+                            <Trash2 size={12} />
+                            <span className="font-mono text-[9px] uppercase tracking-wider font-medium">
+                              Delete
+                            </span>
+                          </button>
+                        )}
+                        <button
+                          onClick={() => toggleLike(rev.id)}
+                          className={`flex items-center space-x-1.5 transition-colors focus:outline-none cursor-pointer ${
+                            likedReviews[rev.id] ? "text-[#d4af37]" : "text-[#8ba2b5] hover:text-[#d4af37]"
+                          }`}
+                          aria-label={likedReviews[rev.id] ? "Disconnect with reader" : "Connect with reader"}
+                        >
+                          <Heart size={12} className={likedReviews[rev.id] ? "fill-current" : "fill-none"} />
+                          <span className="font-mono text-[9px] uppercase tracking-wider">
+                            {likedReviews[rev.id] ? "Connected" : "Connect"}
+                          </span>
+                        </button>
+                      </div>
                     </div>
                   </motion.div>
                 ))
