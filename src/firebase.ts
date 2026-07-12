@@ -5,7 +5,6 @@
 
 import { initializeApp } from "firebase/app";
 import { getFirestore, doc, getDocFromServer } from "firebase/firestore";
-import { getAuth, signInAnonymously } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDtngu97FnVgX1dYDe1u9avOYIsSUTsmVE",
@@ -20,12 +19,6 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Firestore with the custom database ID
 export const db = getFirestore(app, "ai-studio-auraauthorstudio-fd23b804-5f5a-4db3-af0f-e48e332fe5b0");
-export const auth = getAuth(app);
-
-// Authenticate anonymously on startup
-signInAnonymously(auth).catch((error) => {
-  console.error("Failed to sign in anonymously:", error);
-});
 
 async function testConnection() {
   try {

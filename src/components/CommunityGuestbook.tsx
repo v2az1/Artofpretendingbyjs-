@@ -8,12 +8,23 @@ import { motion, AnimatePresence } from "motion/react";
 import { MessageSquare, Heart, Sparkles, Star, ShieldCheck, Trash2 } from "lucide-react";
 import { INITIAL_REVIEWS, Review } from "../types";
 import { collection, query, orderBy, onSnapshot, addDoc, deleteDoc, doc } from "firebase/firestore";
-import { onAuthStateChanged, User } from "firebase/auth";
-import { db, auth } from "../firebase";
+import { db } from "../firebase";
 
 export default function CommunityGuestbook() {
   const [reviews, setReviews] = useState<Review[]>([]);
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  
+  const [clientUserId] = useState<string>(() => {
+    try {
+      let id = localStorage.getItem("sanctuary_client_user_id");
+      if (!id) {
+        id = "user-" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+        localStorage.setItem("sanctuary_client_user_id", id);
+      }
+      return id;
+    } catch {
+      return "user-temp-" + Math.random().toString(36).substring(2, 15);
+    }
+  });
   
   const [likedReviews, setLikedReviews] = useState<Record<string, boolean>>(() => {
     try {
@@ -42,13 +53,6 @@ export default function CommunityGuestbook() {
   
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  // Authenticate and listen to auth state changes
-  useEffect(() => {
-    return onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-    });
-  }, []);
 
   // Fetch reviews from Firestore in real-time
   useEffect(() => {
@@ -106,11 +110,6 @@ export default function CommunityGuestbook() {
       return;
     }
 
-    if (!auth.currentUser) {
-      setError("Connecting to sanctuary database... Please try again in a moment.");
-      return;
-    }
-
     try {
       const newReviewData = {
         name: name.trim(),
@@ -119,7 +118,7 @@ export default function CommunityGuestbook() {
         text: text.trim(),
         date: new Date().toISOString().split("T")[0],
         verified: false,
-        userId: auth.currentUser.uid
+        userId: clientUserId
       };
 
       const docRef = await addDoc(collection(db, "reviews"), newReviewData);
@@ -367,7 +366,7 @@ export default function CommunityGuestbook() {
                         The Art of Pretending Companion Feed
                       </span>
                       <div className="flex items-center space-x-4">
-                        {(myReviewIds.includes(rev.id) || (rev.userId && currentUser && rev.userId === currentUser.uid)) && (
+                        {(myReviewIds.includes(rev.id) || (rev.userId && rev.userId === clientUserId)) && (
                           <button
                             onClick={() => handleDeleteReview(rev.id)}
                             className="flex items-center space-x-1 text-red-500 hover:text-red-400 transition-colors focus:outline-none cursor-pointer"
