@@ -3,23 +3,17 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { MessageSquare, Heart, Sparkles, Star, ShieldCheck, Trash2 } from "lucide-react";
 import { INITIAL_REVIEWS, Review } from "../types";
+import { collection, query, orderBy, onSnapshot, addDoc, deleteDoc, doc } from "firebase/firestore";
+import { onAuthStateChanged, User } from "firebase/auth";
+import { db, auth } from "../firebase";
 
 export default function CommunityGuestbook() {
-  const [reviews, setReviews] = useState<Review[]>(() => {
-    try {
-      const saved = localStorage.getItem("sanctuary_guestbook_reviews");
-      if (saved) {
-        return JSON.parse(saved);
-      }
-    } catch (e) {
-      console.error("Failed to load guestbook reviews from localStorage", e);
-    }
-    return INITIAL_REVIEWS;
-  });
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
   
   const [likedReviews, setLikedReviews] = useState<Record<string, boolean>>(() => {
     try {
@@ -49,6 +43,38 @@ export default function CommunityGuestbook() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Authenticate and listen to auth state changes
+  useEffect(() => {
+    return onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+    });
+  }, []);
+
+  // Fetch reviews from Firestore in real-time
+  useEffect(() => {
+    const q = query(collection(db, "reviews"), orderBy("date", "desc"));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const fetched: Review[] = [];
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        fetched.push({
+          id: doc.id,
+          name: data.name,
+          location: data.location || "Sanctuary Reader",
+          rating: data.rating,
+          text: data.text,
+          date: data.date,
+          verified: data.verified || false,
+          userId: data.userId
+        });
+      });
+      setReviews(fetched);
+    }, (err) => {
+      console.error("Error listening to reviews:", err);
+    });
+    return () => unsubscribe();
+  }, []);
+
   const toggleLike = (id: string) => {
     const updated = { ...likedReviews, [id]: !likedReviews[id] };
     setLikedReviews(updated);
@@ -59,63 +85,66 @@ export default function CommunityGuestbook() {
     }
   };
 
-  const handleDeleteReview = (id: string) => {
-    const updatedReviews = reviews.filter((rev) => rev.id !== id);
-    setReviews(updatedReviews);
-    
-    const updatedMyIds = myReviewIds.filter((myId) => myId !== id);
-    setMyReviewIds(updatedMyIds);
-    
+  const handleDeleteReview = async (id: string) => {
     try {
-      localStorage.setItem("sanctuary_guestbook_reviews", JSON.stringify(updatedReviews));
+      await deleteDoc(doc(db, "reviews", id));
+      
+      const updatedMyIds = myReviewIds.filter((myId) => myId !== id);
+      setMyReviewIds(updatedMyIds);
       localStorage.setItem("sanctuary_my_review_ids", JSON.stringify(updatedMyIds));
     } catch (e) {
-      console.error("Failed to delete review from localStorage", e);
+      console.error("Failed to delete review from Firestore:", e);
+      setError("You do not have permission to delete this reflection.");
+      setTimeout(() => setError(null), 4000);
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !text.trim()) {
       setError("Please complete both your name and your reflection.");
       return;
     }
 
-    const newReview: Review = {
-      id: `custom-rev-${Date.now()}`,
-      name: name.trim(),
-      location: location.trim() ? location.trim() : "Sanctuary Reader",
-      rating: rating,
-      text: text.trim(),
-      date: new Date().toISOString().split("T")[0],
-      verified: false
-    };
-
-    const updatedReviews = [newReview, ...reviews];
-    setReviews(updatedReviews);
-
-    const updatedMyIds = [newReview.id, ...myReviewIds];
-    setMyReviewIds(updatedMyIds);
+    if (!auth.currentUser) {
+      setError("Connecting to sanctuary database... Please try again in a moment.");
+      return;
+    }
 
     try {
-      localStorage.setItem("sanctuary_guestbook_reviews", JSON.stringify(updatedReviews));
-      localStorage.setItem("sanctuary_my_review_ids", JSON.stringify(updatedMyIds));
-    } catch (e) {
-      console.error("Failed to save reviews to localStorage", e);
-    }
-    
-    setSuccess(true);
-    setError(null);
+      const newReviewData = {
+        name: name.trim(),
+        location: location.trim() ? location.trim() : "Sanctuary Reader",
+        rating: rating,
+        text: text.trim(),
+        date: new Date().toISOString().split("T")[0],
+        verified: false,
+        userId: auth.currentUser.uid
+      };
 
-    // Reset fields
-    setName("");
-    setLocation("");
-    setText("");
-    
-    // Clear success message after 4s
-    setTimeout(() => {
-      setSuccess(false);
-    }, 4000);
+      const docRef = await addDoc(collection(db, "reviews"), newReviewData);
+
+      const updatedMyIds = [docRef.id, ...myReviewIds];
+      setMyReviewIds(updatedMyIds);
+      localStorage.setItem("sanctuary_my_review_ids", JSON.stringify(updatedMyIds));
+      
+      setSuccess(true);
+      setError(null);
+
+      // Reset fields
+      setName("");
+      setLocation("");
+      setText("");
+      
+      // Clear success message after 4s
+      setTimeout(() => {
+        setSuccess(false);
+      }, 4000);
+    } catch (e) {
+      console.error("Failed to save review to Firestore:", e);
+      setError("Failed to save your reflection. Please try again.");
+      setTimeout(() => setError(null), 4000);
+    }
   };
 
   return (
@@ -338,7 +367,7 @@ export default function CommunityGuestbook() {
                         The Art of Pretending Companion Feed
                       </span>
                       <div className="flex items-center space-x-4">
-                        {myReviewIds.includes(rev.id) && (
+                        {(myReviewIds.includes(rev.id) || (rev.userId && currentUser && rev.userId === currentUser.uid)) && (
                           <button
                             onClick={() => handleDeleteReview(rev.id)}
                             className="flex items-center space-x-1 text-red-500 hover:text-red-400 transition-colors focus:outline-none cursor-pointer"

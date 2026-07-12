@@ -19,6 +19,7 @@ export interface Review {
   text: string;
   date: string;
   verified: boolean;
+  userId?: string;
 }
 
 export interface GuestbookEntry {

@@ -1,0 +1,25 @@
+{
+  "entities": {
+    "Review": {
+      "title": "Review",
+      "description": "A book review or reflection left by a reader in the guestbook sanctuary.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "The unique ID of the review." },
+        "name": { "type": "string", "description": "The reader's name." },
+        "location": { "type": "string", "description": "The reader's location." },
+        "rating": { "type": "number", "description": "The star rating out of 5." },
+        "text": { "type": "string", "description": "The custom review/reflection text." },
+        "date": { "type": "string", "description": "The date when the review was written (YYYY-MM-DD)." },
+        "verified": { "type": "boolean", "description": "Whether the reviewer's purchase/pre-order has been verified." }
+      },
+      "required": ["id", "name", "rating", "text", "date", "verified"]
+    }
+  },
+  "firestore": {
+    "/reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "Collection of community reviews/reflections."
+    }
+  }
+}
