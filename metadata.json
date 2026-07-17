@@ -1,6 +1,6 @@
 {
-  "name": "The Art of Pretending — Javeria Naseer",
-  "description": "The premium official companion website for 'The Art of Pretending' by Javeria Naseer. An immersive, poetic self-help companion designed to make visitors feel understood, safe, and emotionally connected.",
+  "name": "The Art Of Pretending: It Doesn't Hurt — Javeria Naseer",
+  "description": "The premium official companion website for 'The Art Of Pretending: It Doesn't Hurt' by Javeria Naseer. An immersive, poetic self-help companion designed to make visitors feel understood, safe, and emotionally connected.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

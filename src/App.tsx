@@ -65,7 +65,7 @@ export default function App() {
       <PullQuote 
         quote="We were all learning the same unspoken truth that growing up often feels like pretending you have it together while quietly falling apart when no one is watching."
         author="Javeria Naseer"
-        italicizedAuthorSub="The Art of Pretending"
+        italicizedAuthorSub="The Art Of Pretending: It Doesn't Hurt"
       />
 
       {/* About the Book Section (with 3D CSS Mockup and Interactive Chapters map) */}

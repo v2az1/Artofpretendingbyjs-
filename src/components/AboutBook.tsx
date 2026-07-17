@@ -4,7 +4,7 @@
  */
 
 import { BookOpen, Calendar, MapPin, Award } from "lucide-react";
-import bookCoverImg from "../assets/images/book_cover_real_1783097385467.jpg";
+import bookCoverImg from "../assets/images/book_cover_final.png";
 
 export default function AboutBook() {
   return (
@@ -25,7 +25,7 @@ export default function AboutBook() {
             Discover the Journey
           </span>
           <h2 className="font-serif text-3xl md:text-5xl text-slate-100 font-medium tracking-wide">
-            The Psychological Anatomy of Our Masks
+            About Book
           </h2>
           <div className="w-12 h-[1px] bg-gold-500/40 mx-auto mt-6"></div>
         </div>
@@ -64,7 +64,7 @@ export default function AboutBook() {
                   >
                     <img 
                       src={bookCoverImg} 
-                      alt="Spine of The Art of Pretending" 
+                      alt="Spine of The Art Of Pretending: It Doesn't Hurt" 
                       className="absolute top-0 left-0 h-full max-w-none object-cover"
                       style={{
                         width: "900%",
@@ -99,7 +99,7 @@ export default function AboutBook() {
                   >
                     <img 
                       src={bookCoverImg} 
-                      alt="Front Cover of The Art of Pretending" 
+                      alt="Front Cover of The Art Of Pretending: It Doesn't Hurt" 
                       className="h-full w-full object-cover"
                       referrerPolicy="no-referrer"
                     />
@@ -122,7 +122,7 @@ export default function AboutBook() {
                         We all pretend sometimes...
                       </h4>
                       <p className="font-sans text-[9px] leading-relaxed text-slate-400">
-                        The Art of Pretending explores the hidden struggles many carry in silence: loneliness, homesickness, and the heavy pressure to appear okay. It uncovers the feelings left unspoken.
+                        The Art Of Pretending: It Doesn't Hurt explores the hidden struggles many carry in silence: loneliness, homesickness, and the heavy pressure to appear okay. It uncovers the feelings left unspoken.
                       </p>
                     </div>
                     <div className="flex justify-between items-end border-t border-slate-900/60 pt-4">
@@ -166,7 +166,7 @@ export default function AboutBook() {
             </div>
 
             <p className="font-sans text-sm md:text-base leading-relaxed text-slate-300">
-              The Art of Pretending uncovers the hidden battles we fight in silence. From loneliness, homesickness, and relationship distances to family expectations and heavy self-doubt, author Javeria Naseer acts as a gentle guide. She explains the psychological survival mechanisms behind why we construct masks, and how we can slowly, safely dismantle them to build genuine connections with ourselves.
+              The Art Of Pretending: It Doesn't Hurt uncovers the hidden battles we fight in silence. From loneliness, homesickness, and relationship distances to family expectations and heavy self-doubt, author Javeria Naseer acts as a gentle guide. She explains the psychological survival mechanisms behind why we construct masks, and how we can slowly, safely dismantle them to build genuine connections with ourselves.
             </p>
 
             {/* Spec Cards Container */}

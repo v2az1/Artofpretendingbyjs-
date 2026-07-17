@@ -363,7 +363,7 @@ export default function CommunityGuestbook() {
 
                     <div className="flex justify-between items-center border-t border-slate-900/40 pt-3">
                       <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#8ba2b5]/60">
-                        The Art of Pretending Companion Feed
+                        The Art Of Pretending: It Doesn't Hurt Companion Feed
                       </span>
                       <div className="flex items-center space-x-4">
                         {(myReviewIds.includes(rev.id) || (rev.userId && rev.userId === clientUserId)) && (

@@ -253,7 +253,7 @@ export default function Sanctuary() {
                   </h4>
                   {/* Slow cycling subtexts */}
                   <p className="font-sans text-xs text-[#8ba2b5] animate-pulse leading-relaxed">
-                    Preparing a compassionate response from the pages of 'The Art of Pretending'
+                    Preparing a compassionate response from the pages of "The Art Of Pretending: It Doesn't Hurt"
                   </p>
                 </div>
                 

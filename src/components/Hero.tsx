@@ -8,7 +8,7 @@ import { motion } from "motion/react";
 import { ChevronDown } from "lucide-react";
 
 // Importing the generated book cover image
-import bookCoverImg from "../assets/images/book_cover_real_1783097385467.jpg";
+import bookCoverImg from "../assets/images/book_cover_final.png";
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
@@ -45,7 +45,7 @@ export default function Hero() {
       >
         <img
           src={bookCoverImg}
-          alt="The Art of Pretending Cinematic Cover Background"
+          alt="The Art Of Pretending: It Doesn't Hurt Cinematic Cover Background"
           className="w-full h-full object-cover filter brightness-90 saturate-[0.85]"
           referrerPolicy="no-referrer"
         />
@@ -97,14 +97,14 @@ export default function Hero() {
           Javeria Naseer
         </motion.p>
 
-        {/* 2. The Art of Pretending: 52-60px Cormorant Garamond Italic, near white */}
+        {/* 2. The Art Of Pretending: It Doesn't Hurt: 52-60px Cormorant Garamond Italic, near white */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           className="font-serif text-[42px] sm:text-[54px] md:text-[68px] italic leading-tight text-slate-100 mb-6 drop-shadow-sm font-medium tracking-wide"
         >
-          The Art of Pretending
+          The Art Of Pretending: It Doesn't Hurt
         </motion.h1>
 
         {/* 3. "Behind every 'I'm fine' is a world waiting to be understood." : 14px italic, mist blue */}

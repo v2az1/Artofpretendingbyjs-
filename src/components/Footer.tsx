@@ -25,7 +25,7 @@ export default function Footer() {
           {/* Column 1: Book Branding and Tagline */}
           <div className="md:col-span-4 flex flex-col space-y-4">
             <span className="font-serif text-lg md:text-xl tracking-wide text-slate-100 font-medium">
-              The Art of Pretending
+              The Art Of Pretending: It Doesn't Hurt
             </span>
             <p className="font-serif italic text-xs md:text-sm text-slate-400 max-w-xs leading-relaxed">
               "Behind every 'I'm fine' is a world waiting to be understood."

@@ -67,7 +67,7 @@ export default function Excerpt() {
           
           {/* Top notebook headers */}
           <div className="flex justify-between items-center border-b border-slate-900/60 pb-6 mb-8 text-[#8ba2b5]/50 font-mono text-[9px] uppercase tracking-widest">
-            <span>The Art of Pretending</span>
+            <span>The Art Of Pretending: It Doesn't Hurt</span>
             <span>
               {activeTab === "chapter1" ? "Chapter 1 Excerpt" : "Chapter 9 Excerpt"}
             </span>
@@ -89,7 +89,7 @@ export default function Excerpt() {
                   <footer className="mt-4 flex items-center space-x-2 justify-end">
                     <span className="w-4 h-[1px] bg-gold-500/40"></span>
                     <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#8ba2b5] font-medium">
-                      Javeria Naseer, Chapter 1
+                      The Art of Pretending It Doesn't Hurt, Chapter 1
                     </span>
                   </footer>
                 </div>
@@ -188,7 +188,7 @@ export default function Excerpt() {
                   <footer className="mt-4 flex items-center space-x-2 justify-end">
                     <span className="w-4 h-[1px] bg-gold-500/40"></span>
                     <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#8ba2b5] font-medium">
-                      Javeria Naseer, Chapter 9
+                      The Art of Pretending It Doesn't Hurt, Chapter 9
                     </span>
                   </footer>
                 </div>

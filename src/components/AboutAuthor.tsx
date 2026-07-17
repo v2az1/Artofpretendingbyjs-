@@ -43,18 +43,12 @@ export default function AboutAuthor() {
 
           <div className="space-y-6 max-w-3xl text-slate-300 font-sans text-sm md:text-base leading-relaxed">
             <p>
-              Javeria Naseer is an emerging writer and a dedicated <strong className="text-[#d4af37]">BS Psychology student</strong> based in Pakistan. Her academic path offers her a unique lens into the intricate architectures of human emotion: specifically, the defensive masks we build to survive distress, social expectations, and personal trauma.
+              Javeria Naseer is a debut author and BS Psychology student based in Pakistan. Her writing explores the intersection of emotional experience and human behaviour drawing on her academic background, her experience living away from home, and her deep curiosity about the stories people carry behind composed exteriors.
             </p>
 
             <p>
-              In <em className="italic text-slate-200">The Art of Pretending</em>, Javeria translates complex clinical theories of psychological coping mechanisms, cognitive dissonance, and emotional suppression into a warm, deeply accessible self-help guide. She is passionate about mental health advocacy, believing that authentic writing can act as a catalyst for self-discovery and collective healing.
+              <em className="italic text-slate-200">The Art of Pretending: It Doesn't Hurt</em> is her first book. It was written across nearly a year and a half of her life, beginning as a 20th birthday gift to herself and growing into something far larger than she planned much like growing up itself.
             </p>
-
-            <div className="relative py-6 my-4 border-y border-slate-900/80">
-              <span className="font-serif text-lg md:text-xl italic text-slate-200 max-w-2xl block mx-auto leading-relaxed">
-                "I didn't write because I held all the answers. I wrote because my psychology studies taught me how to sit comfortably with the heavy questions. I wanted to build a quiet sanctuary in print, a place where people can slowly take off their public smiles and feel safe enough to fall apart, knowing they will be put back together with grace."
-              </span>
-            </div>
           </div>
 
           {/* Academic & Author Highlights - Styled elegantly in a 2x2 grid */}
