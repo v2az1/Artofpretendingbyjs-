@@ -60,6 +60,7 @@ export default function AboutBook() {
                       top: "0px",
                       transform: "rotateY(-90deg) translateZ(18px)",
                       transformStyle: "preserve-3d",
+                      backfaceVisibility: "hidden",
                     }}
                   >
                     <img 
@@ -95,6 +96,7 @@ export default function AboutBook() {
                     style={{
                       transform: "translateZ(18px)",
                       transformStyle: "preserve-3d",
+                      backfaceVisibility: "hidden",
                     }}
                   >
                     <img 
@@ -115,6 +117,7 @@ export default function AboutBook() {
                     style={{
                       transform: "rotateY(180deg) translateZ(18px)",
                       transformStyle: "preserve-3d",
+                      backfaceVisibility: "hidden",
                     }}
                   >
                     <div className="flex flex-col space-y-3">
