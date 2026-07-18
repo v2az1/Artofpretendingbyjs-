@@ -8,7 +8,7 @@ import { motion } from "motion/react";
 import { ChevronDown } from "lucide-react";
 
 // Importing the clean background artwork image (without text)
-import heroBgImg from "../assets/images/real_book_cover_1784180966710.jpg";
+import heroBgImg from "../assets/images/real_book_cover_1784180966710.png";
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
