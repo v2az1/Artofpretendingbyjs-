@@ -48,8 +48,8 @@ export default function Hero() {
   alt="The Art Of Pretending: It Doesn't Hurt Background"
   className="absolute inset-0 w-full h-full object-cover brightness-90 saturate-[0.85]"
   style={{
-    objectPosition: "70% 75% center",
-    transform: "translateY(10px) scale(1.08)",
+    objectPosition: "75% 75% center",
+    transform: "translateY(0px) scale(1.08)",
   }}
   referrerPolicy="no-referrer"
 />
