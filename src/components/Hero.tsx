@@ -49,7 +49,7 @@ export default function Hero() {
   className="absolute inset-0 w-full h-full object-cover brightness-90 saturate-[0.85]"
   style={{
     objectPosition: "59% 75% center",
-    transform: "scale(1.08)",
+    transform: "translateY(40px) scale(1.08)",
   }}
   referrerPolicy="no-referrer"
 />
