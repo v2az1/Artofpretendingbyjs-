@@ -47,6 +47,7 @@ export default function Hero() {
           src={bookCoverImg}
           alt="The Art Of Pretending: It Doesn't Hurt Cinematic Cover Background"
           className="w-full h-full object-cover filter brightness-90 saturate-[0.85]"
+          style={{ objectPosition: "center 40%" }}
           referrerPolicy="no-referrer"
         />
         {/* Subtle Ambient Vignette & Linear Gradients */}
