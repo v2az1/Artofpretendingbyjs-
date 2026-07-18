@@ -7,8 +7,8 @@ import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { ChevronDown } from "lucide-react";
 
-// Importing the generated book cover image
-import bookCoverImg from "../assets/images/book_cover_final.png";
+// Importing the clean background artwork image (without text)
+import heroBgImg from "../assets/images/real_book_cover_1784180966710.jpg";
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
@@ -37,22 +37,19 @@ export default function Hero() {
     >
       {/* Parallax Background Image Container */}
       <div
-        className="absolute inset-0 overflow-hidden"
-       style={{
-       transform: `translateY(${scrollY * 0.3}px)`,
-      transition: "transform 0.1s ease-out",
-     }}
-    >
+        className="absolute inset-0 w-full h-full scale-105"
+        style={{
+          transform: `translateY(${scrollY * 0.3}px)`,
+          transition: "transform 0.1s ease-out",
+        }}
+      >
         <img
-  src={bookCoverImg}
-  alt="The Art Of Pretending: It Doesn't Hurt Background"
-  className="absolute inset-0 w-full h-full object-cover brightness-90 saturate-[0.85]"
-  style={{
-    objectPosition: "75% 75% center",
-    transform: "translateY(0px) scale(1.08)",
-  }}
-  referrerPolicy="no-referrer"
-/>
+          src={heroBgImg}
+          alt="The Art Of Pretending: It Doesn't Hurt Cinematic Cover Background"
+          className="w-full h-full object-cover filter brightness-90 saturate-[0.85]"
+          style={{ objectPosition: "center 40%" }}
+          referrerPolicy="no-referrer"
+        />
         {/* Subtle Ambient Vignette & Linear Gradients */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0b1622] via-[#0b1622]/40 to-[#0b1622]/50"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#0b1622]/80 via-transparent to-transparent"></div>
