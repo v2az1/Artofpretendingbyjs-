@@ -4,7 +4,7 @@
  */
 
 import { BookOpen, Calendar, MapPin, Award } from "lucide-react";
-import bookCoverImg from "../assets/images/book_cover_final.png";
+import bookCoverImg from "../assets/images/The Art of Pretending It Doesn't Hurt (3).png";
 
 export default function AboutBook() {
   return (
