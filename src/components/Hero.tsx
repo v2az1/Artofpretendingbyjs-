@@ -36,24 +36,27 @@ export default function Hero() {
       aria-label="Welcome and Book Hero"
     >
       {/* Parallax Background Image Container */}
-      <div
-        className="absolute inset-0 w-full h-full scale-105"
-        style={{
-          transform: `translateY(${scrollY * 0.3}px)`,
-          transition: "transform 0.1s ease-out",
-        }}
-      >
+<div
+  className="absolute inset-0 overflow-hidden"
+  style={{
+    transform: `translateY(${scrollY * 0.3}px)`,
+    transition: "transform 0.1s ease-out",
+  }}
+>
         <img
-          src={heroBgImg}
-          alt="The Art Of Pretending: It Doesn't Hurt Cinematic Cover Background"
-          className="w-full h-full object-cover filter brightness-90 saturate-[0.85]"
-          style={{ objectPosition: "center 90%" }}
-          referrerPolicy="no-referrer"
-        />
+  src={bookCoverImg}
+  alt="The Art Of Pretending: It Doesn't Hurt Background"
+  className="absolute inset-0 w-full h-full object-cover brightness-90 saturate-[0.85]"
+  style={{
+    objectPosition: "22% center",
+    transform: "scale(1.08)",
+  }}
+  referrerPolicy="no-referrer"
+/>
         {/* Subtle Ambient Vignette & Linear Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b1622] via-[#0b1622]/40 to-[#0b1622]/50"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0b1622]/80 via-transparent to-transparent"></div>
-      </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b1622] via-[#0b1622]/45 to-[#0b1622]/35"></div>
+
+<div className="absolute inset-0 bg-gradient-to-b from-[#0b1622]/75 via-transparent to-transparent"></div>
 
       {/* Specified Dark Overlay: rgba(11, 22, 34, 0.75) */}
       <div 
