@@ -37,19 +37,22 @@ export default function Hero() {
     >
       {/* Parallax Background Image Container */}
       <div
-        className="absolute inset-0 w-full h-full scale-105"
-        style={{
-          transform: `translateY(${scrollY * 0.3}px)`,
-          transition: "transform 0.1s ease-out",
-        }}
-      >
+        className="absolute inset-0 overflow-hidden"
+       style={{
+       transform: `translateY(${scrollY * 0.3}px)`,
+      transition: "transform 0.1s ease-out",
+     }}
+    >
         <img
-          src={bookCoverImg}
-          alt="The Art Of Pretending: It Doesn't Hurt Cinematic Cover Background"
-          className="w-full h-full object-cover filter brightness-90 saturate-[0.85]"
-          style={{ objectPosition: "center 40%" }}
-          referrerPolicy="no-referrer"
-        />
+  src={bookCoverImg}
+  alt="The Art Of Pretending: It Doesn't Hurt Background"
+  className="absolute inset-0 w-full h-full object-cover brightness-90 saturate-[0.85]"
+  style={{
+    objectPosition: "22% center",
+    transform: "scale(1.08)",
+  }}
+  referrerPolicy="no-referrer"
+/>
         {/* Subtle Ambient Vignette & Linear Gradients */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0b1622] via-[#0b1622]/40 to-[#0b1622]/50"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#0b1622]/80 via-transparent to-transparent"></div>
