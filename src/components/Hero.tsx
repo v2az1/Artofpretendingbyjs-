@@ -42,7 +42,8 @@ export default function Hero() {
     transform: `translateY(${scrollY * 0.3}px)`,
     transition: "transform 0.1s ease-out",
   }}
->
+  >
+</div>
         <img
   src={heroBgImg}
   alt="The Art Of Pretending: It Doesn't Hurt Background"
